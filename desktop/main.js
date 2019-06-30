@@ -36,7 +36,7 @@ app.on('ready', () => {
     webPreferences: { zoomFactor: 1.0, nodeIntegration: true, backgroundThrottling: false }
   })
 
-  app.win.loadURL(`file://${__dirname}/sources/index.html`)
+  app.win.loadURL(`file://${__dirname}/sources/index.html?port=${process.env.PILOT_PORT || 49161}`)
   // app.inspect()
 
   app.win.on('closed', () => {

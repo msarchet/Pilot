@@ -1,6 +1,14 @@
 const dgram = require('dgram')
 
 export default function Listener (pilot) {
+  // TODO: Configurable on load
+  let params = new URLSearchParams(window.location.search)
+  this.port = 49161
+
+  if (params.has('port')) {
+    this.port = params.get('port')
+  }
+
   this.server = dgram.createSocket('udp4')
 
   this.server.on('message', (msg, rinfo) => {
@@ -17,5 +25,11 @@ export default function Listener (pilot) {
     server.close()
   })
 
-  this.server.bind(49161) // TODO - make this configurable
+  this.setPort = function (port){
+    this.port = port;
+
+    this.server.bind(this.port) 
+  }
+
+  this.setPort(this.port)
 }

@@ -26,6 +26,9 @@
 
       controller.add("default","File","Record",() => { pilot.recorder.toggle() },"CmdOrCtrl+R")
       controller.add("default","File","Stop Recording",() => { pilot.recorder.stop() },"Escape")
+      controller.add("default", "Network", "Set Port - Default (49161)", () => { pilot.listener.setPort(49161) }, "CmdOrCtrl+M")
+      controller.add("default", "Network", "Set Port 49162", () => { pilot.listener.setPort(49162) }, "CmdOrCtrl+N")
+      controller.add("default", "Network", "Set Port 49163", () => { pilot.listener.setPort(49163) }, "CmdOrCtrl+J")
 
       controller.addRole('default', 'Edit', 'undo')
       controller.addRole('default', 'Edit', 'redo')
